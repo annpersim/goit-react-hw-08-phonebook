@@ -28,7 +28,7 @@ export const Form = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const arrayOfNames = contacts.map(contact => contact.name.toLowerCase());
+    const names = contacts.map(contact => contact.name.toLowerCase());
 
     if (contacts.length === 0) {
       dispatch(addContact({ name: name, number: number, id: nanoid() }));
@@ -37,7 +37,7 @@ export const Form = () => {
       return;
     }
 
-    if (arrayOfNames.includes(name.toLowerCase())) {
+    if (names.includes(name.toLowerCase())) {
       alert(`${name} is alerady in Contacts`);
       setName('');
       setNumber('');
