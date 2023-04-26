@@ -1,32 +1,51 @@
 import { useState } from 'react';
 import { ContactForm, Input, Button } from './Form.styled';
+import { nanoid } from 'nanoid';
+import { useDispatch, useSelector } from 'react-redux';
+import { addContact } from 'redux/contactsSlice';
 
-export function Form({ onSubmit }) {
+export const Form = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-
+  const dispatch = useDispatch();
+  const contacts = useSelector(state => state.contacts.list);
   const handleChange = e => {
-    switch (e.currentTarget.name) {
+    const { name, value } = e.currentTarget;
+    switch (name) {
       case 'name':
-        setName(e.currentTarget.value);
+        setName(value);
+
         break;
       case 'number':
-        setNumber(e.currentTarget.value);
-        break;
-      default:
-        return;
-    }
-  };
+        setNumber(value);
 
-  const reset = () => {
-    setName('');
-    setNumber('');
+        break;
+
+      default:
+        break;
+    }
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    onSubmit({ name, number });
-    reset();
+    const arrayOfNames = contacts.map(contact => contact.name.toLowerCase());
+
+    if (contacts.length === 0) {
+      dispatch(addContact({ name: name, number: number, id: nanoid() }));
+      setName('');
+      setNumber('');
+      return;
+    }
+
+    if (arrayOfNames.includes(name.toLowerCase())) {
+      alert(`${name} is alerady in Contacts`);
+      setName('');
+      setNumber('');
+      return;
+    }
+    dispatch(addContact({ name: name, number: number, id: nanoid() }));
+    setName('');
+    setNumber('');
   };
 
   return (
@@ -55,4 +74,4 @@ export function Form({ onSubmit }) {
       <Button type="submit">Add contact</Button>
     </ContactForm>
   );
-}
+};
