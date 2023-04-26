@@ -1,14 +1,24 @@
 import { ContactsList, ContactsItem, Button } from './ContactList.styled';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { removeContact } from 'redux/contactsSlice';
 
-export const ContactList = ({ data }) => {
+export const ContactList = () => {
   const dispatch = useDispatch();
+  const contacts = useSelector(state => state.contacts.list);
+  const filterValue = useSelector(state => state.filter);
+  const filteredData = () => {
+    if (filterValue !== '') {
+      return contacts.filter(contact =>
+        contact.name.toLowerCase().includes(filterValue.toLowerCase())
+      );
+    }
+    return contacts;
+  };
 
   return (
-    data.length > 0 && (
+    filteredData().length > 0 && (
       <ContactsList>
-        {data.map(({ id, name, number }) => (
+        {filteredData().map(({ id, name, number }) => (
           <ContactsItem key={id}>
             <p>
               {name}: {number}
