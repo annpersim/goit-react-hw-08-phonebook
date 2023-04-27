@@ -1,14 +1,16 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { ContactForm, Input, Button } from './Form.styled';
 import { nanoid } from 'nanoid';
-import { addContact } from 'redux/contactsSlice';
+import { addContacts } from 'redux/operations';
 import { getContacts } from 'redux/selectors';
+import { fetchContacts } from 'redux/operations';
 
 export const Form = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(getContacts);
 
   const handleSubmit = e => {
+    e.preventDefault();
     const data = {
       id: nanoid(),
       name: e.target.elements.name.value,
@@ -18,7 +20,10 @@ export const Form = () => {
       contact => contact.name.toLowerCase() === data.name.toLowerCase()
     )
       ? alert(`${data.name} is already in contacts!`)
-      : dispatch(addContact(data));
+      : dispatch(addContacts(data));
+    setTimeout(() => {
+      dispatch(fetchContacts());
+    }, 500);
     e.target.reset();
   };
 
