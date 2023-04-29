@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { fetchContacts } from 'redux/contacts/operations';
 import { useEffect } from 'react';
 import ContactForm from 'components/ContactForm/ContactForm';
-import { Container, ContactContainer, FlexList } from 'components/App.styled';
+import { ContactContainer, FlexList } from 'components/App.styled';
 import { Filter } from 'components/Filter/Filter';
 
 function Contacts() {
