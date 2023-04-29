@@ -1,0 +1,12 @@
+.authlink {
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 700;
+  color: #fffffe;
+  margin-right: 10px;
+}
+
+.authlink:hover,
+.authlink:focus {
+  color: #ff8906;
+}

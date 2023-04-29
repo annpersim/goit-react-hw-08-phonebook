@@ -1,0 +1,26 @@
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.margin {
+  margin-right: 10px;
+}
+
+.logout {
+  background-color: #fffffe;
+  color: #ff8906;
+  padding: 0 5px;
+  height: 20px;
+  border: 1px solid #ff8906;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  font-family: inherit;
+}
+
+.logout:hover,
+.logout:focus {
+  background-color: #ff8906;
+  color: #fffffe;
+}

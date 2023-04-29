@@ -1,0 +1,14 @@
+.list {
+  list-style: square;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 15px;
+}
+
+.names {
+  font-size: 17px;
+}

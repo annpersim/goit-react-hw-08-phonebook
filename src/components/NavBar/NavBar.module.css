@@ -1,0 +1,8 @@
+.nav {
+  display: flex;
+  background-color: #f25f4c;
+  padding: 20px;
+  justify-content: space-between;
+  border-bottom: 2px black solid;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
