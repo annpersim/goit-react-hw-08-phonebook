@@ -2,7 +2,7 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, 'Indie Flower', cursive;
+  font-family: -apple-system, 'Roboto', 'Indie Flower', cursive;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
